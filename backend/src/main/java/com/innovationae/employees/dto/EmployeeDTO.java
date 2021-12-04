@@ -7,6 +7,7 @@ import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 import com.innovationae.employees.utils.UniqueEmail;
@@ -32,7 +33,8 @@ public class EmployeeDTO {
     @NotNull(message = "Please enter email") 
     @UniqueEmail
     private String emailId;
-    @NotBlank(message = "Please enter Phone number")   
+    @NotBlank(message = "Please enter Phone number")
+    @Pattern(regexp = "^[0-9]{3}-[0-9]{3}-[0-9]{4}$", message = "Only digits and - are allowed")
     @Size(max=20, message = "Phone number should not be greater than 20 characters")
     private String phoneNumber;
     private Date hireDate;
