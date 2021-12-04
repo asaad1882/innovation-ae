@@ -1,0 +1,112 @@
+<div class="row">
+    <div class="card col-md-6 offset-md-3 offset-md-3">
+        <div class="row">
+            <h3 class="text-center"> Update  Employee </h3>
+            <hr />
+            <div class="card-body">
+                <form (ngSubmit)="onSubmit()">
+                     <div *ngIf="error" class="alert alert-danger">
+                        {{ error }}
+                    </div>
+
+                    <div class="form-group">
+                        <label> First Name</label>
+                        <input type="text" class="form-control" id="firstName" [(ngModel)]="employee.firstName"
+                            name="firstName" required minlength="4" maxlength="20" #firstName="ngModel">
+
+                        <div *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)">
+
+                            <div *ngIf="firstName.errors?.required" class="alert alert-danger">
+                                First Name is required.
+                            </div>
+                            <div *ngIf="firstName.errors?.minlength" class="alert alert-danger">
+                                Name must be at least 4 characters long.
+                            </div>
+                            <div *ngIf="firstName.errors?.maxlength" class="alert alert-danger">
+                                Name must be at least 20 characters long.
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label> Last Name</label>
+                        <input type="text" class="form-control" id="lastName" [(ngModel)]="employee.lastName" required
+                            minlength="4" maxlength="20" #lastName="ngModel" name="lastName">
+                        <div *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)">
+
+                            <div *ngIf="lastName.errors?.required" class="alert alert-danger">
+                                Last Name is required.
+                            </div>
+                            <div *ngIf="lastName.errors?.minlength" class="alert alert-danger">
+                                Last must be at least 4 characters long.
+                            </div>
+                            <div *ngIf="lastName.errors?.maxlength" class="alert alert-danger">
+                                Last must be at least 20 characters long.
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label> Email </label>
+                        <input type="email" class="form-control" id="emailId" [(ngModel)]="employee.emailId"
+                            name="emailId" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required #email="ngModel" readonly>
+                        <div *ngIf="email.touched">
+                            <div *ngIf="email.errors?.required" class="alert alert-danger">Email is required</div>
+                            <div *ngIf="email.errors?.pattern" class="alert alert-danger">This is not a valid Email
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="hiringDate">Hiring Date</label>
+                        <input type="date" class="form-control" id="hiringDate" name="hiringDate"
+                            [(ngModel)]="employee.hireDate" #hiringDate="ngModel" required>
+                        <div *ngIf="hiringDate.invalid && (hiringDate.dirty || hiringDate.touched)"
+                            class="alert alert-danger">
+                            <div *ngIf="hiringDate.errors?.required">
+                                Hiring Date is required.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="salary">Employee Salary</label>
+                        <input type="number" class="form-control" id="salary" name="salary"
+                            [(ngModel)]="employee.salary" placeholder="100.00" #salary="ngModel" required>
+                        <div *ngIf="salary.invalid && (salary.dirty || salary.touched)" class="alert alert-danger">
+                            <div *ngIf="salary.errors?.required">
+                                Salary is required.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone</label>
+                        <input type="number" class="form-control" id="phoneNumber" name="phoneNumber"
+                            [(ngModel)]="employee.phoneNumber"  #phone="ngModel" required>
+                        <div *ngIf="phone.invalid && (phone.dirty || phone.touched)" class="alert alert-danger">
+                            <div *ngIf="salary.errors?.required">
+                                Phone is required.
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="employeeType">Department</label>
+                        <select class="form-control" name="employeeType" [(ngModel)]="employee.departmentId" required >
+                            <option *ngFor="let department of departments" id="departmentId" [ngValue]="employee.departmentId" [selected]="employee.departmentId==department.id">
+                                {{department.departmentName}}</option>
+                        </select>
+                    </div>
+
+
+                    <br />
+                    <button class="btn btn-success" type="submit">Submit</button>
+                   
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
