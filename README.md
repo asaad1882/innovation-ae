@@ -31,7 +31,9 @@ Angular 13 Client sends HTTP Requests and retrieve HTTP Responses using HttpClie
 ![image](https://user-images.githubusercontent.com/24566432/144722508-7e615b9c-b538-4267-bf7e-eafc0bb44f23.png)
 
 # Available APIs
-
+Swagger: http://localhost:8080/swagger-ui.html 
+API Docs: http://localhost:8080/v2/api-docs
+Also the API Documentation file is called employees.json
 ![image](https://user-images.githubusercontent.com/24566432/144722358-df5081ca-ed47-400c-b104-3acffa1cb7e9.png)
 
 # Application screenshots
