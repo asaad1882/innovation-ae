@@ -9,7 +9,7 @@ import { Department } from './department';
   providedIn: 'root'
 })
 export class DepartmentService {
-  private baseUrlRef='http://localhost:8080/api/v1/department';
+  private baseUrlRef='http://127.0.0.1:8080/api/v1/department';
   constructor(private http:HttpClient) { }
 
 getAllDepartments():Observable<Department[]>{
