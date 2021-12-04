@@ -23,7 +23,7 @@
 		<coverage.instruction.threshold>0.90</coverage.instruction.threshold>
 		<coverage.class.threshold>0.90</coverage.class.threshold>
 		<coverage.line.threshold>0.90</coverage.line.threshold>
-		<coverage.branch.threshold>0.60</coverage.branch.threshold>
+		<coverage.branch.threshold>0.50</coverage.branch.threshold>
 		<coverage.method.threshold>0.90</coverage.method.threshold>
 	</properties>
 

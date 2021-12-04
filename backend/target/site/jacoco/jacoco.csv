@@ -2,7 +2,7 @@ GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_
 Coverage with JaCoCo,com.innovationae.employees.utils,UniqueEmailValidator,9,3,2,0,1,1,2,1,1,1
 Coverage with JaCoCo,com.innovationae.employees.utils,ObjectMapperUtils,6,28,0,0,2,5,1,4,1,4
 Coverage with JaCoCo,com.innovationae.employees,Application,0,8,0,0,0,3,0,2,0,2
-Coverage with JaCoCo,com.innovationae.employees.service,DepartmentService,24,63,0,0,2,12,2,5,2,5
-Coverage with JaCoCo,com.innovationae.employees.service,EmployeeService,24,159,0,2,0,33,2,8,2,7
-Coverage with JaCoCo,com.innovationae.employees.controller,EmployeeController,35,6,0,0,5,3,5,1,5,1
-Coverage with JaCoCo,com.innovationae.employees.controller,DepartmentController,23,6,0,0,4,3,4,1,4,1
+Coverage with JaCoCo,com.innovationae.employees.service,DepartmentService,0,87,0,0,0,14,0,7,0,7
+Coverage with JaCoCo,com.innovationae.employees.service,EmployeeService,0,183,0,2,0,33,0,10,0,9
+Coverage with JaCoCo,com.innovationae.employees.controller,EmployeeController,0,41,0,0,0,8,0,6,0,6
+Coverage with JaCoCo,com.innovationae.employees.controller,DepartmentController,0,29,0,0,0,7,0,5,0,5

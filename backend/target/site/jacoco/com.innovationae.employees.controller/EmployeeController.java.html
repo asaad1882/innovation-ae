@@ -38,33 +38,33 @@ public class EmployeeController {
     @GetMapping(&quot;/employees&quot;)
     public ResponseEntity&lt;Map&lt;String, Object&gt;&gt; getAllEmployees(@RequestParam(required = false)  String firstName,
             @RequestParam(defaultValue = &quot;0&quot;) int page, @RequestParam(defaultValue = &quot;3&quot;) int size) {
-<span class="nc" id="L41">        return new ResponseEntity&lt;&gt;(employeeService.getAllEmployees(firstName, page, size), HttpStatus.OK);</span>
+<span class="fc" id="L41">        return new ResponseEntity&lt;&gt;(employeeService.getAllEmployees(firstName, page, size), HttpStatus.OK);</span>
     }
 
     @GetMapping(&quot;/employees/{id}&quot;)
     public ResponseEntity&lt;EmployeeDTO&gt; getEmployeeById(@PathVariable(value = &quot;id&quot;) Long employeeId)
             throws ResourceNotFoundException {
 
-<span class="nc" id="L48">        return ResponseEntity.ok().body(employeeService.getEmployeeById(employeeId));</span>
+<span class="fc" id="L48">        return ResponseEntity.ok().body(employeeService.getEmployeeById(employeeId));</span>
     }
 
     @PostMapping(&quot;/employees&quot;)
     public EmployeeDTO createEmployee(@Valid @RequestBody EmployeeDTO employee) {
-<span class="nc" id="L53">        return employeeService.createEmployee(employee);</span>
+<span class="fc" id="L53">        return employeeService.createEmployee(employee);</span>
     }
 
     @PutMapping(&quot;/employees/{id}&quot;)
     public ResponseEntity&lt;EmployeeDTO&gt; updateEmployee(@PathVariable(value = &quot;id&quot;) Long employeeId,
             @Valid @RequestBody EmployeeDTO employeeDetails) throws ResourceNotFoundException {
        
-<span class="nc" id="L60">        return ResponseEntity.ok(employeeService.updateEmployee(employeeId, employeeDetails));</span>
+<span class="fc" id="L60">        return ResponseEntity.ok(employeeService.updateEmployee(employeeId, employeeDetails));</span>
     }
 
     @DeleteMapping(&quot;/employees/{id}&quot;)
     public Map&lt;String, Boolean&gt; deleteEmployee(@PathVariable(value = &quot;id&quot;) Long employeeId)
             throws ResourceNotFoundException {
        
-<span class="nc" id="L67">        return employeeService.deleteEmployee(employeeId);</span>
+<span class="fc" id="L67">        return employeeService.deleteEmployee(employeeId);</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>
