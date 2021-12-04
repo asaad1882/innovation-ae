@@ -22,3 +22,20 @@ Angular 13 Client sends HTTP Requests and retrieve HTTP Responses using HttpClie
 
 - Build Specific Container without Cache
 : docker-compose build --no-cache service_name
+# Overall Architecture 
+![image](https://user-images.githubusercontent.com/24566432/144722451-5da5ce3e-416e-452f-8cf1-a16bd182cd3b.png)
+
+# Backend Architecture
+![image](https://user-images.githubusercontent.com/24566432/144722405-f7d78d5d-1885-44ce-95cf-6e5cf40ba4ac.png)
+
+# Available APIs
+
+![image](https://user-images.githubusercontent.com/24566432/144722358-df5081ca-ed47-400c-b104-3acffa1cb7e9.png)
+
+# Application screenshots
+![image](https://user-images.githubusercontent.com/24566432/144722383-7d22d6fc-ab39-4eed-8832-7ea1149d14ee.png)
+![image](https://user-images.githubusercontent.com/24566432/144722386-a5d57bdb-d5cc-4237-ba3c-8e78f3930a41.png)
+![image](https://user-images.githubusercontent.com/24566432/144722389-424e7438-4f27-4707-922a-367b760e3e2f.png)
+
+
+
