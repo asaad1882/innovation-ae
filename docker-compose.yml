@@ -30,3 +30,7 @@ services:
       - app-server
     networks:
       - frontend  
+# Networks to be created to facilitate communication between containers
+networks:
+  backend:
+  frontend: 
