@@ -27,6 +27,8 @@ Angular 13 Client sends HTTP Requests and retrieve HTTP Responses using HttpClie
 
 # Backend Architecture
 ![image](https://user-images.githubusercontent.com/24566432/144722405-f7d78d5d-1885-44ce-95cf-6e5cf40ba4ac.png)
+# Frontend Architecture
+![image](https://user-images.githubusercontent.com/24566432/144722508-7e615b9c-b538-4267-bf7e-eafc0bb44f23.png)
 
 # Available APIs
 
