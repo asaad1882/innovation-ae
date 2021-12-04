@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>EmployeeController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Coverage with JaCoCo</a> &gt; <a href="index.source.html" class="el_package">com.innovationae.employees.controller</a> &gt; <span class="el_source">EmployeeController.java</span></div><h1>EmployeeController.java</h1><pre class="source lang-java linenums">package com.innovationae.employees.controller;
 
-import java.util.HashMap;
-
-import java.util.List;
 import java.util.Map;
 
 import javax.validation.Valid;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -17,62 +16,55 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.innovationae.employees.dto.EmployeeDTO;
 import com.innovationae.employees.exception.ResourceNotFoundException;
-import com.innovationae.employees.model.Employee;
-import com.innovationae.employees.repository.EmployeeRepository;
-
-
+import com.innovationae.employees.service.IEmployeeService;
 
 @CrossOrigin(origins = &quot;http://localhost:4200&quot;)
 @RestController
 @RequestMapping(&quot;/api/v1&quot;)
-<span class="fc" id="L31">public class EmployeeController {</span>
-        @Autowired
-        private EmployeeRepository employeeRepository;
+public class EmployeeController {
 
-        @GetMapping(&quot;/employees&quot;)
-        public List&lt;Employee&gt; getAllEmployees() {
-<span class="nc" id="L37">                return employeeRepository.findAll();</span>
-        }
+    private IEmployeeService employeeService;
 
-        @GetMapping(&quot;/employees/{id}&quot;)
-        public ResponseEntity&lt;Employee&gt; getEmployeeById(@PathVariable(value = &quot;id&quot;) Long employeeId)
-                        throws ResourceNotFoundException {
-<span class="nc" id="L43">                Employee employee = employeeRepository.findById(employeeId)</span>
-<span class="nc" id="L44">                                .orElseThrow(() -&gt; new ResourceNotFoundException(&quot;Employee not found for this id :: &quot; + employeeId));</span>
-<span class="nc" id="L45">                return ResponseEntity.ok().body(employee);</span>
-        }
+    @Autowired
+<span class="fc" id="L34">    public EmployeeController(IEmployeeService employeeService) {</span>
+<span class="fc" id="L35">        this.employeeService = employeeService;</span>
+<span class="fc" id="L36">    }</span>
 
-        @PostMapping(&quot;/employees&quot;)
-        public Employee createEmployee(@Valid @RequestBody Employee employee) {
-<span class="nc" id="L50">                return employeeRepository.save(employee);</span>
-        }
+    @GetMapping(&quot;/employees&quot;)
+    public ResponseEntity&lt;Map&lt;String, Object&gt;&gt; getAllEmployees(@RequestParam(required = false)  String firstName,
+            @RequestParam(defaultValue = &quot;0&quot;) int page, @RequestParam(defaultValue = &quot;3&quot;) int size) {
+<span class="nc" id="L41">        return new ResponseEntity&lt;&gt;(employeeService.getAllEmployees(firstName, page, size), HttpStatus.OK);</span>
+    }
 
-        @PutMapping(&quot;/employees/{id}&quot;)
-        public ResponseEntity&lt;Employee&gt; updateEmployee(@PathVariable(value = &quot;id&quot;) Long employeeId,
-                        @Valid @RequestBody Employee employeeDetails) throws ResourceNotFoundException {
-<span class="nc" id="L56">                Employee employee = employeeRepository.findById(employeeId)</span>
-<span class="nc" id="L57">                                .orElseThrow(() -&gt; new ResourceNotFoundException(&quot;Employee not found for this id :: &quot; + employeeId));</span>
+    @GetMapping(&quot;/employees/{id}&quot;)
+    public ResponseEntity&lt;EmployeeDTO&gt; getEmployeeById(@PathVariable(value = &quot;id&quot;) Long employeeId)
+            throws ResourceNotFoundException {
 
-<span class="nc" id="L59">                employee.setEmailId(employeeDetails.getEmailId());</span>
-<span class="nc" id="L60">                employee.setLastName(employeeDetails.getLastName());</span>
-<span class="nc" id="L61">                employee.setFirstName(employeeDetails.getFirstName());</span>
-<span class="nc" id="L62">                final Employee updatedEmployee = employeeRepository.save(employee);</span>
-<span class="nc" id="L63">                return ResponseEntity.ok(updatedEmployee);</span>
-        }
+<span class="nc" id="L48">        return ResponseEntity.ok().body(employeeService.getEmployeeById(employeeId));</span>
+    }
 
-        @DeleteMapping(&quot;/employees/{id}&quot;)
-        public Map&lt;String, Boolean&gt; deleteEmployee(@PathVariable(value = &quot;id&quot;) Long employeeId)
-                        throws ResourceNotFoundException {
-<span class="nc" id="L69">                Employee employee = employeeRepository.findById(employeeId)</span>
-<span class="nc" id="L70">                                .orElseThrow(() -&gt; new ResourceNotFoundException(&quot;Employee not found for this id :: &quot; + employeeId));</span>
+    @PostMapping(&quot;/employees&quot;)
+    public EmployeeDTO createEmployee(@Valid @RequestBody EmployeeDTO employee) {
+<span class="nc" id="L53">        return employeeService.createEmployee(employee);</span>
+    }
 
-<span class="nc" id="L72">                employeeRepository.delete(employee);</span>
-<span class="nc" id="L73">                Map&lt;String, Boolean&gt; response = new HashMap&lt;&gt;();</span>
-<span class="nc" id="L74">                response.put(&quot;deleted&quot;, Boolean.TRUE);</span>
-<span class="nc" id="L75">                return response;</span>
-        }
+    @PutMapping(&quot;/employees/{id}&quot;)
+    public ResponseEntity&lt;EmployeeDTO&gt; updateEmployee(@PathVariable(value = &quot;id&quot;) Long employeeId,
+            @Valid @RequestBody EmployeeDTO employeeDetails) throws ResourceNotFoundException {
+       
+<span class="nc" id="L60">        return ResponseEntity.ok(employeeService.updateEmployee(employeeId, employeeDetails));</span>
+    }
+
+    @DeleteMapping(&quot;/employees/{id}&quot;)
+    public Map&lt;String, Boolean&gt; deleteEmployee(@PathVariable(value = &quot;id&quot;) Long employeeId)
+            throws ResourceNotFoundException {
+       
+<span class="nc" id="L67">        return employeeService.deleteEmployee(employeeId);</span>
+    }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

@@ -1,12 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: employeeAPI.EmployeeRepositoryTest
 -------------------------------------------------------------------------------
-Tests run: 7, Failures: 0, Errors: 2, Skipped: 0, Time elapsed: 0.291 s <<< FAILURE! - in employeeAPI.EmployeeRepositoryTest
-findOneEmployeeByEmailId(employeeAPI.EmployeeRepositoryTest)  Time elapsed: 0.051 s  <<< ERROR!
-java.lang.NullPointerException
-	at employeeAPI.EmployeeRepositoryTest.findOneEmployeeByEmailId(EmployeeRepositoryTest.java:58)
-
-updateEmployee(employeeAPI.EmployeeRepositoryTest)  Time elapsed: 0.022 s  <<< ERROR!
-java.lang.NullPointerException
-	at employeeAPI.EmployeeRepositoryTest.updateEmployee(EmployeeRepositoryTest.java:72)
-
+Tests run: 7, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.223 s - in employeeAPI.EmployeeRepositoryTest

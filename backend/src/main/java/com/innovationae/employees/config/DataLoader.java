@@ -1,4 +1,4 @@
-package com.innovationae.employees.service;
+package com.innovationae.employees.config;
 
 import java.sql.Date;
 

@@ -118,6 +118,8 @@
 						<exclude>**/SwaggerConfiguration.*</exclude>
 						<exclude> *Test</exclude>
 						<exclude>com/innovationae/employees/dto/*.class</exclude>
+						
+						<exclude>com/innovationae/employees/config/*.class</exclude>
 						<exclude>com/innovationae/employees/model/*.class</exclude>
 
 						<exclude>com/innovationae/employees/exception/*.class</exclude>
